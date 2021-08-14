@@ -9,6 +9,9 @@ const mutations = {
 }
 
 const actions = {
+  /**
+   * Fetch GHG types
+   */
   async getProducts({ commit, dispatch, state }) {
     try {
       const res = await this.$api.get('products.json')

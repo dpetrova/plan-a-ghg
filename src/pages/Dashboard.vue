@@ -104,7 +104,7 @@
               <apexchart
                 width="100%"
                 height="500px"
-                type="line"
+                :type="chartTypes[settings.chartType]"
                 :options="chartOptions"
                 :series="stats"
               ></apexchart>
@@ -142,9 +142,18 @@ export default defineComponent({
       return store.state.statistics.downloaded
     })
 
+    const settings = computed(() => {
+      return store.getters['settings/settings']
+    })
+
+    const chartTypes = computed(() => {
+      return store.getters['settings/chartTypes']
+    })
+
     let chartOptions = reactive({
       theme: {
-        palette: 'palette8',
+        mode: settings.value.darkTheme ? 'dark' : 'light',
+        palette: 'palette1',
       },
       chart: {
         height: 'auto',
@@ -171,7 +180,7 @@ export default defineComponent({
         redrawOnWindowResize: true,
       },
       dataLabels: {
-        enabled: true,
+        enabled: settings.value.chartType < 2,
       },
       stroke: {
         curve: 'smooth',
@@ -238,7 +247,6 @@ export default defineComponent({
       },
       tooltip: {
         enabled: true,
-        theme: 'light',
       },
       responsive: [
         {
@@ -323,6 +331,8 @@ export default defineComponent({
       statsDownloaded,
       chartOptions,
       product,
+      settings,
+      chartTypes,
     }
   },
 })

@@ -1,6 +1,6 @@
 <template>
   <!-- external links -->
-  <q-item clickable tag="a" target="_blank" :href="to" v-if="external">
+  <q-item clickable tag="a" target="_blank" :href="to" exact v-if="external">
     <q-item-section v-if="icon" avatar>
       <q-icon :name="icon" />
     </q-item-section>
@@ -12,7 +12,7 @@
     </q-item-section>
   </q-item>
   <!-- internal links -->
-  <q-item clickable :to="to" v-else>
+  <q-item clickable :to="to" exact v-else>
     <q-item-section v-if="icon" avatar>
       <q-icon :name="icon" />
     </q-item-section>

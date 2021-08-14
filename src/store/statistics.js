@@ -74,7 +74,7 @@ const mutations = {
 
 const actions = {
   /**
-   * Fetch data with query params
+   * Fetch average GHG emission data
    */
   async getAverages({ commit, state, getters }) {
     try {
