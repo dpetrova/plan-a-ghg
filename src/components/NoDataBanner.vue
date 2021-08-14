@@ -1,6 +1,6 @@
 <template>
   <q-banner rounded class="bg-primary">
-    <div class="text-subtitle1 text-white">No data to snow.</div>
+    <div class="text-subtitle1 text-white">No data.</div>
   </q-banner>
 </template>
 

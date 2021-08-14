@@ -1,5 +1,6 @@
 <template>
   <q-page padding>
+    <!-- Settings section -->
     <q-list bordered padding class="q-mb-md">
       <q-item-label header class="text-primary">Settings</q-item-label>
 
@@ -33,17 +34,9 @@
       </q-item>
     </q-list>
 
+    <!-- More section -->
     <q-list bordered padding>
       <q-item-label header class="text-primary">More</q-item-label>
-      <!-- 
-      <q-item @click="visitOurWebsite" tag="label" v-ripple>
-        <q-item-section>
-          <q-item-label>Visit our website</q-item-label>
-        </q-item-section>
-        <q-item-section side>
-          <q-icon name="chevron_right" />
-        </q-item-section>
-      </q-item> -->
 
       <q-item @click="emailMe" tag="label" v-ripple>
         <q-item-section>

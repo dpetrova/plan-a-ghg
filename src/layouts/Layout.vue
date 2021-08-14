@@ -48,8 +48,15 @@ const linksList = [
   {
     label: 'Github Repo',
     icon: 'code',
-    caption: 'github.com/dpetrova/plan-a-ghg',
+    caption: 'https://github.com/dpetrova/plan-a-ghg',
     to: 'https://github.com/dpetrova/plan-a-ghg',
+    external: true,
+  },
+  {
+    label: 'Live',
+    icon: 'public',
+    caption: 'https://plana-ghg-emissions-dashboard.onrender.com',
+    to: 'https://plana-ghg-emissions-dashboard.onrender.com',
     external: true,
   },
 ]

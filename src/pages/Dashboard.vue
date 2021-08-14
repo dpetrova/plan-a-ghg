@@ -6,7 +6,7 @@
         <!-- GHG type -->
         <div class="q-pa-md">
           <div class="q-mb-sm text-h5">
-            GHG types
+            GHG type
             <q-badge rounded color="grey-3 text-black" align="top"
               >?
               <q-tooltip class="text-subtitle2"
@@ -338,10 +338,4 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss">
-// .apexcharts-toolbar {
-//   position: absolute;
-//   right: auto;
-//   left: 10px;
-// }
-</style>
+<style lang="scss" scoped></style>
