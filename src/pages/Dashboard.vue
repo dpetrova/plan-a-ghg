@@ -69,6 +69,31 @@
             "
           />
         </div>
+
+        <!-- Data aggregation-->
+        <div class="q-pa-md">
+          <div class="q-mb-lg text-h5">
+            Aggregate data
+            <q-badge rounded color="grey-3 text-black" align="top"
+              >?
+              <q-tooltip class="text-subtitle2"
+                >Select interval by which data will be aggregated.</q-tooltip
+              ></q-badge
+            >
+          </div>
+          <q-slider
+            v-model="interval"
+            :min="0"
+            :max="intervalValues.length - 1"
+            :step="1"
+            label
+            :label-value="intervalValues[interval]"
+            label-always
+            markers
+            snap
+            color="primary"
+          />
+        </div>
       </div>
 
       <!-- DATA REPRESENTATION-->
@@ -150,6 +175,19 @@ export default defineComponent({
       return store.getters['settings/chartTypes']
     })
 
+    const intervalValues = computed(() => {
+      return store.getters['statistics/intervalValues']
+    })
+
+    const interval = computed({
+      get() {
+        return store.getters['statistics/interval']
+      },
+      set(value) {
+        store.dispatch('statistics/selectInterval', value)
+      },
+    })
+
     let chartOptions = reactive({
       theme: {
         mode: settings.value.darkTheme ? 'dark' : 'light',
@@ -224,7 +262,7 @@ export default defineComponent({
       },
       yaxis: {
         title: {
-          text: 'GHG, [mol/m3]',
+          text: 'GHG, [ppb]',
           style: {
             fontSize: '16px',
             fontFamily: 'Helvetica, Arial, sans-serif',
@@ -277,7 +315,7 @@ export default defineComponent({
       },
       set(value) {
         store.dispatch('statistics/selectProduct', value)
-        chartOptions.yaxis.title.text = `${value.name}, [mol/m3]`
+        chartOptions.yaxis.title.text = `${value.name}, [ppb]`
       },
     })
 
@@ -317,7 +355,7 @@ export default defineComponent({
 
       await store.dispatch('statistics/getRangeBoundaries')
 
-      chartOptions.yaxis.title.text = `${product.value.name}, [mol/m3]`
+      chartOptions.yaxis.title.text = `${product.value.name}, [ppb]`
       store.dispatch('statistics/getAverages')
     })
 
@@ -333,6 +371,8 @@ export default defineComponent({
       product,
       settings,
       chartTypes,
+      intervalValues,
+      interval,
     }
   },
 })
