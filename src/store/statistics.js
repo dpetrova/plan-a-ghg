@@ -3,7 +3,7 @@ import moment from 'moment'
 const { subtractFromDate, addToDate, getDateDiff } = date
 
 //use only a few for simplicity
-const intervalValues = ['no', 'day', 'month', 'quarter', 'year']
+const intervalValues = ['day', 'month', 'quarter', 'year']
 
 /**
  * Setup default time range
