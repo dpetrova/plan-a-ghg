@@ -89,9 +89,6 @@ const actions = {
         ? 'average.json'
         : 'statistics.json'
 
-      console.log(getters.query)
-      console.log(apiEndpoint)
-
       commit('SET_DOWNLOADED', false)
       const res = await this.$api.get(
         `/${state.product.name}/${apiEndpoint}`,
@@ -153,51 +150,6 @@ const actions = {
     dispatch('getAverages')
   },
 }
-
-// [
-//   ({
-//     time: {
-//       interval_start: '2019-02-01T00:00:00Z',
-//       max: '2019-02-28T11:26:44.174000Z',
-//       min: '2019-02-10T10:23:49.831000Z',
-//     },
-//     value: {
-//       average: 0.034613500882137625,
-//       count: 1094,
-//       max: 0.045955054461956024,
-//       min: 0.02407723292708397,
-//       'standard deviation': 0.0036975640603663994,
-//     },
-//   },
-//   {
-//     time: {
-//       interval_start: '2019-03-01T00:00:00Z',
-//       max: '2019-03-31T11:45:27.967000Z',
-//       min: '2019-03-01T11:07:10.365000Z',
-//     },
-//     value: {
-//       average: 0.034891759707919134,
-//       count: 1947,
-//       max: 0.04275590926408768,
-//       min: 0.02295313961803913,
-//       'standard deviation': 0.0030895243633498196,
-//     },
-//   },
-//   {
-//     time: {
-//       interval_start: '2019-04-01T00:00:00Z',
-//       max: '2019-04-19T12:29:43.342000Z',
-//       min: '2019-04-01T11:25:48.028000Z',
-//     },
-//     value: {
-//       average: 0.035700685460733975,
-//       count: 1099,
-//       max: 0.04390999674797058,
-//       min: 0.025161372497677803,
-//       'standard deviation': 0.0031269272153262827,
-//     },
-//   })
-// ]
 
 const getters = {
   averages: (state) => {
