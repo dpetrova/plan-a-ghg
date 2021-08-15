@@ -365,6 +365,17 @@ export default defineComponent({
       await store.dispatch('statistics/getRangeBoundaries')
 
       chartOptions.yaxis.title.text = `${product.value.name}, [ppb]`
+
+      chartOptions.xaxis.labels.formatter = (val, timestamp) => {
+        if (interval.value > 0 && interval.value < 3) {
+          return moment(new Date(timestamp)).format('MMM YYYY')
+        }
+        if (interval.value == 3) {
+          return moment(new Date(timestamp)).format('YYYY')
+        }
+        return moment(new Date(timestamp)).format('DD MMM YYYY')
+      }
+
       store.dispatch('statistics/getAverages')
     })
 
