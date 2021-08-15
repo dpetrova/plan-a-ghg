@@ -185,6 +185,15 @@ export default defineComponent({
       },
       set(value) {
         store.dispatch('statistics/selectInterval', value)
+        chartOptions.xaxis.labels.formatter = (val, timestamp) => {
+          if (value > 0 && value < 3) {
+            return moment(new Date(timestamp)).format('MMM YYYY')
+          }
+          if (value == 3) {
+            return moment(new Date(timestamp)).format('YYYY')
+          }
+          return moment(new Date(timestamp)).format('DD MMM YYYY')
+        }
       },
     })
 
