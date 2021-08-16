@@ -1,5 +1,5 @@
 <template>
-  <q-page padding>
+  <div class="q-pa-md">
     <!-- Settings section -->
     <q-list bordered padding class="q-mb-md">
       <q-item-label header class="text-primary">Settings</q-item-label>
@@ -9,7 +9,11 @@
           <q-item-label>Toggle dark/light mode</q-item-label>
         </q-item-section>
         <q-item-section side>
-          <q-toggle color="primary" v-model="darkTheme" />
+          <q-toggle
+            color="primary"
+            v-model="darkTheme"
+            ref="theme-mode-toggle"
+          />
         </q-item-section>
       </q-item>
 
@@ -29,6 +33,7 @@
             markers
             snap
             color="primary"
+            ref="chart-type-slider"
           />
         </q-item-section>
       </q-item>
@@ -38,7 +43,7 @@
     <q-list bordered padding>
       <q-item-label header class="text-primary">More</q-item-label>
 
-      <q-item @click="emailMe" tag="label" v-ripple>
+      <q-item @click="emailMe" tag="label" v-ripple data-testid="email-me">
         <q-item-section>
           <q-item-label>Email me</q-item-label>
         </q-item-section>
@@ -47,7 +52,7 @@
         </q-item-section>
       </q-item>
     </q-list>
-  </q-page>
+  </div>
 </template>
 
 <script>
@@ -88,9 +93,11 @@ export default defineComponent({
       },
     })
 
+    const emailAddress =
+      'mailto:daniella_petrova@abv.bg?subject=GHG Emissions Dashboard Feedback'
+
     const emailMe = () => {
-      window.location.href =
-        'mailto:daniella_petrova@abv.bg?subject=GHG Emissions Dashboard Feedback'
+      window.location.assign(emailAddress)
     }
 
     return {
@@ -99,6 +106,8 @@ export default defineComponent({
       chartTypes,
       chartType,
       emailMe,
+      emailAddress,
+      quasar: $q,
     }
   },
 })
